@@ -7,7 +7,7 @@ import Button from '../components/Button';
 const Intro = ({ navigation }: { navigation: any }) => {
     return (
         <SafeAreaView style={{flex :1}}>
-            <StatusBar 
+           <StatusBar 
             animated={true}
             backgroundColor="#fff" 
             barStyle={"dark-content"}
@@ -70,7 +70,7 @@ const Intro = ({ navigation }: { navigation: any }) => {
                         labelStyle={{
                             color: COLORS.primary
                         }}
-
+                        onPress={() => navigation.navigate("Login")}
                     />
                 </View>
             </View>

@@ -6,6 +6,7 @@ import Button from '../components/Button';
 import Walkthrough1 from '../components/Slider';
 import AnimationImagesOne from '../components/AnimtionImagesOne';
 import AnimationImagesTwo from '../components/AnimationImagesTwo';
+import AnimationImagesThree from '../components/AnimationImagesThree';
 
 type ViewChangeCallback = ({
   viewableItems,
@@ -16,19 +17,26 @@ type ViewChangeCallback = ({
 }) => void;
 
 
-const InfoApp = () => {
+const InfoApp = ({ navigation }: { navigation: any }) => {
 
   const [animatedTwo , setAnimatedTwo] = useState<boolean>(false)
   const [animtedThree , setAnimatedThree] = useState<boolean>(false)
+  const [animtedFour , setAnimatedFour] = useState<boolean>(false)
 
   const onViewChangeRef = useRef<ViewChangeCallback>(({viewableItems  , changed}) => {
+       console.log(viewableItems[0], "hello" , changed)
        if(viewableItems[0].index === 1){
           setAnimatedTwo(true)
        } 
        if(viewableItems[0].index === 2){
         setAnimatedThree(true)
-     } 
+       }
+       if(viewableItems[0].index === 2 ) {
+         setAnimatedFour(true)
+       }
   })
+
+ 
 
   const scrollX = useRef(new Animated.Value(0)).current;
 
@@ -94,7 +102,7 @@ const InfoApp = () => {
        
         }}>
           <Button
-            label='Join Now'
+            label='Skip'
             contentContainerStyle={{
               flex: 1,
               borderRadius: SIZES.radius,
@@ -105,6 +113,7 @@ const InfoApp = () => {
               color: COLORS.primary,
               ...FONTS.h3
             }}
+            onPress={() => navigation.navigate("Home")}
           />
 
           <Button
@@ -119,6 +128,7 @@ const InfoApp = () => {
               color: COLORS.light,
               ...FONTS.h3
             }}
+            onPress={() => navigation.navigate("Login")}
           />
         </View>
       </View>
@@ -150,6 +160,8 @@ const InfoApp = () => {
           }
         )}
         renderItem={({ item, index }) => {
+          
+     
           return (
             <View
               style={{
@@ -166,7 +178,7 @@ const InfoApp = () => {
                 {index === 0 && (<Walkthrough1/>)}
                 {index === 1 && (<AnimationImagesOne animatedTwo={animatedTwo}/>)}
                 {index === 2 && (<AnimationImagesTwo animatedThree={animtedThree}/>)}
-                 
+                {index === 3 && (<AnimationImagesThree animatedFour={animtedFour}/>)}       
               </View>
               <View style={{
                 justifyContent: "flex-start",

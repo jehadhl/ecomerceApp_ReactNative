@@ -15,7 +15,7 @@ interface ButtonProps {
         backgroundColor?: string | null
     };
     labelStyle: {
-        color: string;
+        color ?: string | null;
     };
     onPress?: () => void;
 }

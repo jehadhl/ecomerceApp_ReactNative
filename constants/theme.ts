@@ -125,7 +125,6 @@ export const FONTS = {
     body5: { fontFamily: "Poppins-Regular", fontSize: SIZES.body5, lineHeight: 22 },
 };
 
-
 const appTheme = { COLORS, SIZES , FONTS };
 
 export default appTheme;
